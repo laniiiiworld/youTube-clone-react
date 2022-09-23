@@ -1,0 +1,20 @@
+.videoDetailPage {
+  display: flex;
+  flex-direction: row;
+}
+
+.videoDetailPage iframe {
+  width: 100%;
+  height: 20rem;
+}
+
+/* +++++++++++++++++ media query +++++++++++++++++ */
+@media only screen and (max-width: 992px) {
+  .videoDetailPage {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 576px) {
+}

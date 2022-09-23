@@ -1,0 +1,33 @@
+.mainPage .videoList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mainPage .videoList .video {
+  display: flex;
+}
+
+.mainPage .videoList .video .thumbnail {
+  width: 15rem;
+}
+.mainPage .videoList .video {
+  font-size: 1rem;
+}
+.mainPage .videoList .video .title {
+  color: black;
+}
+
+.mainPage .videoList .video .channelTitle {
+  color: rgb(110, 108, 108);
+}
+
+/* +++++++++++++++++ media query +++++++++++++++++ */
+@media only screen and (max-width: 992px) {
+  .mainPage .videoList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 576px) {
+}
