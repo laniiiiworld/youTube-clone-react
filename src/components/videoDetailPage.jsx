@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import VideoItem from '../components/videoItem';
-import VideoList from '../components/videoList';
+import VideoItem from './videoItem';
+import VideoList from './videoList/videoList';
 import './videoDetailPage.css';
 
 class VideoDetailPage extends Component {

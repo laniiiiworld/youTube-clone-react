@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import VideoList from '../components/videoList';
-import './mainPage.css';
+import VideoList from './videoList/videoList';
 
 class MainPage extends Component {
   render() {

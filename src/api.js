@@ -1,7 +1,7 @@
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 const API_KEY = 'AIzaSyDKQDoYv-HiRcvnKnOoQty29qAInSov_vA';
 
-let requestOptions = {
+const requestOptions = {
   method: 'GET',
   redirect: 'follow',
 };

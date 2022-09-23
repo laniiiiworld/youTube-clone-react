@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './app.css';
 import { getSearchData, getVideoData } from './api.js';
 import Nav from './components/nav';
-import MainPage from './page/mainPage';
-import VideoDetailPage from './page/videoDetailPage';
+import MainPage from './components/mainPage';
+import VideoDetailPage from './components/videoDetailPage';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
   handleSubmit = async (keyword) => {
     try {
       const videoList = await getSearchData(keyword);
-      this.setState({ videos: videoList.items });
+      this.setState({ ...this.state, videos: videoList.items });
     } catch (error) {
       console.log(error);
     }
@@ -23,8 +23,8 @@ class App extends Component {
 
   getVideoItemData = async (videoId) => {
     try {
-      const video = await getVideoData(videoId);
       if (videoId) {
+        const video = await getVideoData(videoId);
         this.setState({ ...this.state, videoId, video: video.items[0] });
       } else {
         this.setState({ videos: [], videoId, video: {} });

@@ -1,0 +1,26 @@
+.video {
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  padding: 0.4em;
+}
+
+.thumbnail {
+  flex: 1 1 40%;
+}
+
+.info {
+  flex: 1 1 60%;
+  padding-left: 0.4em;
+  font-size: 1rem;
+}
+
+.title {
+  margin: 0;
+  color: black;
+}
+
+.channelTitle {
+  margin: 0;
+  color: rgb(110, 108, 108);
+}
