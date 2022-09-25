@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './app.css';
-import { getSearchData, getVideoData } from './service/youtube.js';
 import Nav from './components/nav/nav';
 import MainPage from './components/mainPage';
 import VideoDetailPage from './components/videoDetailPage';
