@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './keywordSearch.module.css';
 
 class KeywordSearch extends Component {
   inputRef = React.createRef();
@@ -11,9 +12,9 @@ class KeywordSearch extends Component {
 
   render() {
     return (
-      <form className='keywordSearch' onSubmit={this.onSubmit}>
-        <input ref={this.inputRef} type='text' placeholder='검색' />
-        <button>
+      <form className={styles.keywordSearch} onSubmit={this.onSubmit}>
+        <input className={styles.input} ref={this.inputRef} type='text' placeholder='검색' />
+        <button className={styles.button}>
           <i className='fa-solid fa-magnifying-glass'></i>
         </button>
       </form>

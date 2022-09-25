@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './app.css';
 import { getSearchData, getVideoData } from './api.js';
-import Nav from './components/nav';
+import Nav from './components/nav/nav';
 import MainPage from './components/mainPage';
 import VideoDetailPage from './components/videoDetailPage';
 import '@fortawesome/fontawesome-free/js/all.js';

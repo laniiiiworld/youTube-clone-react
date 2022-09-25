@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import KeywordSearch from './keywordSearch';
+import KeywordSearch from '../keywordSearch/keywordSearch';
+import styles from './keywordSearchArea.module.css';
 
 class KeywordSearchArea extends Component {
   render() {
     return (
-      <div className='keywordSearchArea'>
+      <div className={styles.keywordSearchArea}>
         <KeywordSearch handleSubmit={this.props.handleSubmit} />
       </div>
     );
