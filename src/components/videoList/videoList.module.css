@@ -2,20 +2,19 @@
   display: grid;
   padding-left: 0;
   margin: 0;
-  flex: 1 1 20%;
 }
 
-.mainPage .videoList {
+.grid {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.videoDetailPage .videoList {
+.list {
   grid-template-columns: repeat(1, 1fr);
 }
 
 /* +++++++++++++++++ media query +++++++++++++++++ */
 @media only screen and (max-width: 992px) {
-  .videoList {
+  .grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }

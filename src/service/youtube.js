@@ -4,7 +4,7 @@ export default class Youtube {
     this.key = key;
   }
   search = async (keyword) => {
-    const url = `${this.BASE_URL}/search?key=${this.key}&type=video&videoSyndicated=true&part=snippet&maxResults=5&q=${keyword}`;
+    const url = `${this.BASE_URL}/search?key=${this.key}&type=video&videoSyndicated=true&part=snippet&maxResults=25&q=${keyword}`;
     return getAPIData(url);
   };
 

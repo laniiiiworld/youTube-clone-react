@@ -5,8 +5,9 @@ import styles from './videoList.module.css';
 class VideoList extends Component {
   render() {
     const videos = this.props.videos;
+    const displayType = this.props.displayType === 'list' ? styles.list : styles.grid;
     return (
-      <ul className={styles.videoList}>
+      <ul className={`${styles.videoList} ${displayType}`}>
         {videos.map((video) => (
           <Video key={video.id.videoId} video={video} handleVideoClick={this.props.handleVideoClick} />
         ))}

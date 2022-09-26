@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './app.css';
 import Nav from './components/nav/nav';
-import MainPage from './components/mainPage';
-import VideoDetailPage from './components/videoDetailPage';
+import VideoSearchPage from './components/videoSearchPage/videoSearchPage';
+import VideoDetailPage from './components/videoDetailPage/videoDetailPage';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 class App extends Component {
@@ -21,36 +21,33 @@ class App extends Component {
     this.getVideoItemData(videoId);
   };
 
-  getVideoItemData = async (videoId) => {
-    try {
-      if (videoId) {
-        const video = await this.props.youtube.videos(videoId);
-        this.setState({ ...this.state, videoId, video: video.items[0] });
-      } else {
-        this.setState({ videos: [], videoId, video: {} });
-      }
-    } catch (error) {
-      console.log(error);
+  getVideoItemData = (videoId) => {
+    if (videoId) {
+      const video = this.state.videos.find((video) => video.id.videoId === videoId);
+      this.setState({ ...this.state, videoId, video });
+    } else {
+      this.setState({ videos: [], videoId, video: {} });
     }
   };
 
   router = (videoId) => {
     window.scrollTo(0, 0);
+
+    let page;
     if (videoId) {
-      return (
-        <>
-          <Nav handleSubmit={this.handleSubmit} handleVideoClick={this.handleVideoClick} />
-          <VideoDetailPage video={this.state.video} videos={this.state.videos} handleVideoClick={this.handleVideoClick} />
-        </>
-      );
+      page = <VideoDetailPage video={this.state.video} videos={this.state.videos} handleVideoClick={this.handleVideoClick} />;
+    } else {
+      page = <VideoSearchPage videos={this.state.videos} handleVideoClick={this.handleVideoClick} />;
     }
+
     return (
       <>
         <Nav handleSubmit={this.handleSubmit} handleVideoClick={this.handleVideoClick} />
-        <MainPage videos={this.state.videos} handleVideoClick={this.handleVideoClick} />
+        {page}
       </>
     );
   };
+
   render() {
     return this.router(this.state.videoId);
   }
