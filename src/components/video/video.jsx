@@ -13,7 +13,9 @@ class Video extends Component {
     this.videoId = video.id.videoId;
     return (
       <li ref={this.videoId} className={styles.video} onClick={this.onVideoClick}>
-        <img className={styles.thumbnail} src={video.snippet.thumbnails.medium.url}></img>
+        <div className={styles.thumbnail}>
+          <img className={styles.thumbnailImg} src={video.snippet.thumbnails.medium.url}></img>
+        </div>
         <div className={styles.info}>
           <p className={styles.title}>{video.snippet.title}</p>
           <p className={styles.channelTitle}>{video.snippet.channelTitle}</p>

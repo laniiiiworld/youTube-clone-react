@@ -8,3 +8,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ececec;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+input {
+  outline: none;
+}

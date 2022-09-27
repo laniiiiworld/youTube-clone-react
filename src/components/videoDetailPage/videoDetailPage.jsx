@@ -10,6 +10,7 @@ class VideoDetailPage extends Component {
         <div className={styles.content}>
           <VideoDetail //
             video={this.props.video}
+            channel={this.props.channel}
           />
         </div>
         <div className={styles.list}>

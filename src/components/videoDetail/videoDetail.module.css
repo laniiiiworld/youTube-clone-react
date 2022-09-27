@@ -4,7 +4,94 @@
 }
 
 .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-bottom: 0.4em;
 }
 
+.description {
+  white-space: pre-wrap;
+}
+
+/* icons */
+.icons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.4em;
+}
+.icons button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon {
+  font-size: 1.2rem;
+  color: #606060;
+}
+.icon.active {
+  color: #030303;
+  font-weight: bold;
+}
+.icons button span {
+  padding: 0.2em;
+  font-size: 0.8rem;
+  color: #606060;
+}
+
+/* channel info */
+.channelArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.4em;
+  padding-bottom: 1em;
+}
+.channelInfo {
+  flex: 1 1 70%;
+  display: flex;
+  align-items: center;
+}
+.user {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+}
+.channel {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.4em;
+}
 .channelTitle {
+  font-weight: bold;
+  padding-bottom: 0.2em;
+}
+.subscribers {
+  font-size: 0.8rem;
+  color: #606060;
+}
+.buttons {
+  flex: 1 1 30%;
+  text-align: right;
+  color: #606060;
+  font-size: 1.2rem;
+}
+.btn__subscription {
+  font-size: 1.2rem;
+  color: #606060;
+  padding-right: 0.2em;
+}
+.descriptionArea {
+  margin-left: 3em;
+  line-height: 1.2em;
+}
+.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.moreBtn,
+.shortBtn {
+  font-size: 0.8rem;
+  color: #606060;
 }
