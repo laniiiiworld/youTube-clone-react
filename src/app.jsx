@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
-import Nav from './components/nav/nav';
+import Header from './components/header/header';
 import VideoSearchPage from './components/videoSearchPage/videoSearchPage';
 import VideoDetailPage from './components/videoDetailPage/videoDetailPage';
 import '@fortawesome/fontawesome-free/js/all.js';
@@ -42,7 +42,7 @@ class App extends Component {
 
     return (
       <>
-        <Nav handleSubmit={this.handleSubmit} handleVideoClick={this.handleVideoClick} />
+        <Header handleSubmit={this.handleSubmit} handleVideoClick={this.handleVideoClick} />
         {page}
       </>
     );
