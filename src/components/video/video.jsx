@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import styles from './video.module.css';
 
 class Video extends Component {
-  videoId = React.createRef();
-
   onVideoClick = (event) => {
-    this.props.handleVideoClick(this.videoId);
+    const video = this.props.video;
+    this.props.handleVideoClick(video.id.videoId ? video.id.videoId : video.id);
   };
 
   render() {
     const video = this.props.video;
-    this.videoId = video.id.videoId;
     return (
-      <li ref={this.videoId} className={styles.video} onClick={this.onVideoClick}>
+      <li className={styles.video} onClick={this.onVideoClick}>
         <div className={styles.thumbnail}>
           <img className={styles.thumbnailImg} src={video.snippet.thumbnails.medium.url}></img>
         </div>

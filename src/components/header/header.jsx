@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
       <header className={styles.nav}>
-        <div className={styles.logo} onClick={() => this.props.handleVideoClick('')}>
+        <div className={styles.logo}>
           <img className={styles.logoImg} src='/images/logo.png' alt='logo'></img>
           <span>YouTube</span>
         </div>

@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
 import './app.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 import Header from './components/header/header';
+import MainPage from './components/mainPage/mainPage';
 import VideoSearchPage from './components/videoSearchPage/videoSearchPage';
 import VideoDetailPage from './components/videoDetailPage/videoDetailPage';
-import '@fortawesome/fontawesome-free/js/all.js';
+import { routeChange } from './service/router.js';
 
 class App extends Component {
   state = { videoId: '', videos: [], video: {}, channel: {} };
 
+  componentDidMount() {
+    this.getVideosData();
+  }
+
   handleSubmit = async (keyword) => {
     try {
-      const videoList = await this.props.youtube.search(keyword);
-      this.setState({ videos: videoList.items, videoId: '', video: {}, channel: {} });
+      const videos = await this.props.youtube.search(keyword);
+      routeChange(`/search`);
+      this.setState({ videos, videoId: '', video: {}, channel: {} });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getVideosData = async () => {
+    try {
+      const videos = await this.props.youtube.videos();
+      this.setState({ videos, videoId: '', video: {}, channel: {} });
     } catch (error) {
       console.log(error);
     }
   };
 
   handleVideoClick = (videoId) => {
+    routeChange(`/detail/${videoId}`);
     this.getVideoItemData(videoId);
   };
 
@@ -36,26 +53,42 @@ class App extends Component {
     }
   };
 
-  router = (videoId) => {
-    window.scrollTo(0, 0);
-
+  render() {
+    const { pathname } = window.location;
     let page;
-    if (videoId) {
-      page = <VideoDetailPage video={this.state.video} videos={this.state.videos} channel={this.state.channel} handleVideoClick={this.handleVideoClick} />;
-    } else {
-      page = <VideoSearchPage videos={this.state.videos} handleVideoClick={this.handleVideoClick} />;
+    if (pathname === '/') {
+      page = (
+        <MainPage //
+          videos={this.state.videos}
+          handleVideoClick={this.handleVideoClick}
+        />
+      );
+    } else if (pathname.indexOf('/detail') === 0) {
+      page = (
+        <VideoDetailPage //
+          youtube={this.props.youtube}
+          videoId={this.state.videoId}
+          video={this.state.video}
+          channel={this.state.channel}
+          videos={this.state.videos}
+          handleVideoClick={this.handleVideoClick}
+        />
+      );
+    } else if (pathname.indexOf('/search') === 0) {
+      page = (
+        <VideoSearchPage //
+          videos={this.state.videos}
+          handleVideoClick={this.handleVideoClick}
+        />
+      );
     }
 
     return (
       <>
-        <Header handleSubmit={this.handleSubmit} handleVideoClick={this.handleVideoClick} />
+        <Header handleSubmit={this.handleSubmit} />
         {page}
       </>
     );
-  };
-
-  render() {
-    return this.router(this.state.videoId);
   }
 }
 

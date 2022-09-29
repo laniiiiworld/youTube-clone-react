@@ -16,7 +16,7 @@ export default class Youtube {
     };
     try {
       const videoLists = await getAPIData(url, obj);
-      return videoLists;
+      return videoLists.items;
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +36,7 @@ export default class Youtube {
     };
     try {
       const videoLists = await getAPIData(url, obj);
-      return videoLists;
+      return videoLists.items;
     } catch (err) {
       console.log(err);
     }

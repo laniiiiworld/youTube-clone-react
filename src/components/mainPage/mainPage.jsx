@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import styles from './videoSearchPage.module.css';
+import styles from './mainPage.module.css';
 import VideoList from '../videoList/videoList';
 
-class VideoSearchPage extends Component {
+class MainPage extends Component {
   render() {
     return (
-      <main className={styles.videoSearchPage}>
+      <main className={styles.mainPage}>
         <VideoList //
-          displayType={`list`}
+          displayType={`grid`}
           videos={this.props.videos}
           handleVideoClick={this.props.handleVideoClick}
         />
@@ -16,4 +16,4 @@ class VideoSearchPage extends Component {
   }
 }
 
-export default VideoSearchPage;
+export default MainPage;

@@ -9,7 +9,7 @@ class VideoList extends Component {
     return (
       <ul className={`${styles.videoList} ${displayType}`}>
         {videos.map((video) => (
-          <Video key={video.id.videoId} video={video} handleVideoClick={this.props.handleVideoClick} />
+          <Video key={video.id.videoId ? video.id.videoId : video.id} video={video} handleVideoClick={this.props.handleVideoClick} />
         ))}
       </ul>
     );
