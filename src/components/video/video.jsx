@@ -9,8 +9,9 @@ class Video extends Component {
 
   render() {
     const video = this.props.video;
+    const displayType = this.props.displayType === 'list' ? styles.list : styles.grid;
     return (
-      <li className={styles.video} onClick={this.onVideoClick}>
+      <li className={`${styles.video} ${displayType}`} onClick={this.onVideoClick}>
         <div className={styles.thumbnail}>
           <img className={styles.thumbnailImg} src={video.snippet.thumbnails.medium.url}></img>
         </div>
