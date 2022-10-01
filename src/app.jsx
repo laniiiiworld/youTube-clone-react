@@ -12,8 +12,24 @@ class App extends Component {
 
   componentDidMount() {
     this.getVideosData();
+
+    //브라우저에서 뒤로가기, 앞으로가기 등으로 URL이 변경된 경우 감지
+    window.addEventListener('popstate', () => {
+      this.setState({ ...this.state });
+    });
   }
 
+  //메인 페이지 - 비디오 목록 가져오기
+  getVideosData = async () => {
+    try {
+      const videos = await this.props.youtube.videos();
+      this.setState({ videos, videoId: '', video: {}, channel: {} });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //검색 페이지 - 조회 결과 가져오기
   handleSubmit = async (keyword) => {
     try {
       const videos = await this.props.youtube.search(keyword);
@@ -24,33 +40,22 @@ class App extends Component {
     }
   };
 
-  getVideosData = async () => {
-    try {
-      const videos = await this.props.youtube.videos();
-      this.setState({ videos, videoId: '', video: {}, channel: {} });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  //비디오 클릭시
   handleVideoClick = (videoId) => {
     routeChange(`/detail/${videoId}`);
     this.getVideoItemData(videoId);
   };
 
+  //상세 페이지 - 비디오와 채널 데이터 가져오기
   getVideoItemData = async (videoId) => {
-    if (videoId) {
-      const video = await this.props.youtube.videoDetail(videoId);
-      video.snippet.description = setDescription(video.snippet.description);
+    const video = await this.props.youtube.videoDetail(videoId);
+    video.snippet.description = setDescription(video.snippet.description);
 
-      const channelId = video.snippet.channelId;
-      const channel = await this.props.youtube.videoChannel(channelId);
-      channel.statistics = { ...channel.statistics, subscribers: setSubscribers(channel.statistics.subscriberCount) };
+    const channelId = video.snippet.channelId;
+    const channel = await this.props.youtube.videoChannel(channelId);
+    channel.statistics = { ...channel.statistics, subscribers: setSubscribers(channel.statistics.subscriberCount) };
 
-      this.setState({ ...this.state, videoId, video, channel });
-    } else {
-      this.setState({ videos: [], videoId, video: {}, channel: {} });
-    }
+    this.setState({ ...this.state, videoId, video, channel });
   };
 
   render() {
@@ -94,6 +99,7 @@ class App extends Component {
 
 export default App;
 
+//상세 페이지 - 비디오 설명에 있는 링크와 태그 형식 만들기
 function setDescription(description) {
   //줄바꿈 변환
   let str = description.replaceAll('\n', '<br/>');
@@ -104,6 +110,7 @@ function setDescription(description) {
   return str;
 }
 
+//상세 페이지 - 채널 구독자 수
 function setSubscribers(subscriberCount) {
   if (subscriberCount.length > 5) {
     return `${Math.floor(Number(subscriberCount) / 10000)}만명`;
