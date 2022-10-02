@@ -19,6 +19,12 @@ class App extends Component {
     });
   }
 
+  //로고 클릭 시 메인 페이지로 이동
+  handleLogoClick = () => {
+    routeChange(`/`);
+    this.getVideosData();
+  };
+
   //메인 페이지 - 비디오 목록 가져오기
   getVideosData = async () => {
     try {
@@ -41,9 +47,9 @@ class App extends Component {
   };
 
   //비디오 클릭시
-  handleVideoClick = (videoId) => {
+  handleVideoClick = async (videoId) => {
     routeChange(`/detail/${videoId}`);
-    this.getVideoItemData(videoId);
+    await this.getVideoItemData(videoId);
   };
 
   //상세 페이지 - 비디오와 채널 데이터 가져오기
@@ -59,6 +65,7 @@ class App extends Component {
   };
 
   render() {
+    window.scrollTo(0, 0);
     const { pathname } = window.location;
     let page;
     if (pathname === '/') {
@@ -90,7 +97,7 @@ class App extends Component {
 
     return (
       <>
-        <Header handleSubmit={this.handleSubmit} />
+        <Header handleLogoClick={this.handleLogoClick} handleSubmit={this.handleSubmit} />
         {page}
       </>
     );
