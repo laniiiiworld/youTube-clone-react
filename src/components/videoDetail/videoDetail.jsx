@@ -4,8 +4,19 @@ import styles from './videoDetail.module.css';
 const EMBED_URL = 'https://www.youtube.com/embed/';
 
 class VideoDetail extends Component {
+  state = {
+    isMore: false,
+  };
+
+  //더보기, 간략히 버튼
+  handleIsMoreToggle = () => {
+    const { isMore } = this.state;
+    this.setState({ isMore: !isMore });
+  };
+
   render() {
     const video = this.props.video.snippet;
+    const { isMore } = this.state;
 
     return (
       <>
@@ -64,9 +75,13 @@ class VideoDetail extends Component {
           </div>
         </div>
         <div className={styles.descriptionArea}>
-          <div className={styles.description} dangerouslySetInnerHTML={{ __html: video.description }}></div>
-          <button className={styles.moreBtn}>더보기</button>
-          <button className={styles.shortBtn}>간략히</button>
+          <div className={`${styles.description} ${isMore ? '' : styles.clamp}`} dangerouslySetInnerHTML={{ __html: video.description }}></div>
+          <button className={`${styles.moreBtn} ${isMore ? styles.displayNone : ''}`} onClick={this.handleIsMoreToggle}>
+            더보기
+          </button>
+          <button className={`${styles.shortBtn} ${isMore ? '' : styles.displayNone}`} onClick={this.handleIsMoreToggle}>
+            간략히
+          </button>
         </div>
       </>
     );

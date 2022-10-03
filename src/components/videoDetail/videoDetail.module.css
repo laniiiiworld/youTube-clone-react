@@ -91,11 +91,17 @@
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
+
 .moreBtn,
 .shortBtn {
   font-size: 0.8rem;
   color: #606060;
 }
+
+.displayNone {
+  display: none;
+}
+
 /* +++++++++++++++++ media query +++++++++++++++++ */
 @media only screen and (max-width: 992px) {
   .videoPlayer {
