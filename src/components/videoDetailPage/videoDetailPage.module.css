@@ -1,26 +1,27 @@
+@value XLarge-space, Large-space, media-query-large, video-detail-left, video-detail-right from '../../common/size.css';
+@value none-white-color from '../../common/colors.css';
+
 .videoDetailPage {
-  background-color: #f9f9f9;
+  background-color: none-white-color;
   display: flex;
   flex-direction: row;
 }
 
 .content {
+  /* flex: video-detail-left; */
   flex: 1 1 70%;
-  padding: 1em 0.6em 1em 1em;
+  padding: XLarge-space Large-space XLarge-space XLarge-space;
 }
 
 .list {
+  /* flex: video-detail-right; */
   flex: 1 1 30%;
-  padding: 0.6em 0.6em 0.6em 0;
+  padding: Large-space Large-space Large-space 0;
 }
 
 /* +++++++++++++++++ media query +++++++++++++++++ */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: media-query-large) {
   .videoDetailPage {
     flex-direction: column;
   }
-}
-@media only screen and (max-width: 768px) {
-}
-@media only screen and (max-width: 576px) {
 }

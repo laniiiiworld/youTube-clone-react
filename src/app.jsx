@@ -14,8 +14,13 @@ class App extends Component {
     this.getVideosData();
 
     //브라우저에서 뒤로가기, 앞으로가기 등으로 URL이 변경된 경우 감지
-    window.addEventListener('popstate', () => {
-      this.setState({ ...this.state });
+    window.addEventListener('popstate', async () => {
+      const { pathname } = window.location;
+      if (pathname.indexOf('/detail') === 0) {
+        await this.getVideoItemData(pathname.split('/')[2]);
+      } else {
+        this.setState({ ...this.state });
+      }
     });
   }
 

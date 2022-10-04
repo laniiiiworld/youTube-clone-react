@@ -1,4 +1,7 @@
+@value Large-space from '../../common/size.css';
+@value none-white-color from '../../common/colors.css';
+
 .videoSearchPage {
-  padding: 0.6em;
-  background-color: #f9f9f9;
+  padding: Large-space;
+  background-color: none-white-color;
 }

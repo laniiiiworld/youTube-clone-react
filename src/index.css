@@ -12,6 +12,11 @@ code {
 ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
 
 hr {
@@ -33,4 +38,8 @@ a {
 
 input {
   outline: none;
+}
+
+p {
+  margin: 0;
 }

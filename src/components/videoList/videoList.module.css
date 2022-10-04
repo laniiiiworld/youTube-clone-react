@@ -1,7 +1,7 @@
+@value media-query-large, media-query-medium, media-query-small from '../../common/size.css';
+
 .videoList {
   display: grid;
-  padding-left: 0;
-  margin: 0;
 }
 
 .grid {
@@ -13,17 +13,17 @@
 }
 
 /* +++++++++++++++++ media query +++++++++++++++++ */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: media-query-large) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: media-query-medium) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: media-query-small) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }

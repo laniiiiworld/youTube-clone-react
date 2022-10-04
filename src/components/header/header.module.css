@@ -1,18 +1,20 @@
+@value XXXLarge-size, XXLarge-size, small-space, medium-space, Large-space from '../../common/size.css';
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 2rem;
-  padding: 0.4em;
-  padding-top: 0.6em;
+  height: XXXLarge-size;
+  padding: medium-space;
+  padding-top: Large-space;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: XXLarge-size;
   letter-spacing: -0.14rem;
-  margin-right: 0.2em;
+  margin-right: small-space;
 }
 
 .logo:hover {
@@ -20,10 +22,10 @@
 }
 
 .logoImg {
-  width: 2rem;
-  margin-right: 0.1em;
+  width: XXXLarge-size;
+  margin-right: calc(small-space/2);
 }
 
 .icons {
-  width: 4rem;
+  width: calc(XXXLarge-size * 2);
 }
