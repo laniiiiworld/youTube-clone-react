@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './video.module.css';
 
-class Video extends Component {
+class Video extends PureComponent {
   onVideoClick = (event) => {
     const video = this.props.video;
     this.props.handleVideoClick(video.id.videoId ? video.id.videoId : video.id);

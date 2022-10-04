@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import KeywordSearchArea from '../keywordSearchArea/keywordSearchArea';
 import styles from './header.module.css';
 
-class Header extends Component {
+class Header extends PureComponent {
   onLogoClick = (event) => {
     this.props.handleLogoClick();
   };
