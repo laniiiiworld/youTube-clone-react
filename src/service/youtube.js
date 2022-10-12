@@ -4,7 +4,7 @@ export default class Youtube {
     this.key = key;
   }
 
-  //메인 페이지 - 비디오들
+  /** 메인 페이지 - 비디오들 */
   videos = async () => {
     const url = `${this.BASE_URL}/videos?`;
     const obj = {
@@ -23,7 +23,7 @@ export default class Youtube {
     }
   };
 
-  //검색 페이지 - 조회결과
+  /** 검색 페이지 - 조회결과 */
   search = async (keyword) => {
     const url = `${this.BASE_URL}/search?`;
     const obj = {
@@ -44,7 +44,7 @@ export default class Youtube {
     }
   };
 
-  //상세 페이지 - 비디오
+  /** 상세 페이지 - 비디오 */
   videoDetail = async (videoId) => {
     const url = `${this.BASE_URL}/videos?`;
     const obj = {
@@ -60,7 +60,7 @@ export default class Youtube {
     }
   };
 
-  //상세 페이지 - 채널
+  /** 상세 페이지 - 채널 */
   videoChannel = async (channelId) => {
     const url = `${this.BASE_URL}/channels?`;
     const obj = {
@@ -77,7 +77,7 @@ export default class Youtube {
   };
 }
 
-//API에서 데이터 가져오기
+/** API에서 데이터 가져오기 */
 const getAPIData = async (url, obj) => {
   const requestOptions = {
     method: 'GET',

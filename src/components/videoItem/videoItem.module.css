@@ -1,13 +1,13 @@
 @value medium-size, small-size, medium-space, thumbnail-small, video-item-left, video-item-right from '../../common/size.css';
 @value black-color, dark-gray-color from '../../common/colors.css';
 
-.video {
+.videoItem {
   display: flex;
   cursor: pointer;
   padding: medium-space;
 }
 
-.video.list {
+.videoItem.list {
   padding-bottom: 0;
 }
 

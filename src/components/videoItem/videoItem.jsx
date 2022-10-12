@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import styles from './video.module.css';
+import styles from './videoItem.module.css';
 
-class Video extends PureComponent {
+class VideoItem extends PureComponent {
   onVideoClick = (event) => {
     const video = this.props.video;
     this.props.handleVideoClick(video.id.videoId ? video.id.videoId : video.id);
@@ -11,7 +11,7 @@ class Video extends PureComponent {
     const video = this.props.video;
     const displayType = this.props.displayType === 'list' ? styles.list : styles.grid;
     return (
-      <li className={`${styles.video} ${displayType}`} onClick={this.onVideoClick}>
+      <li className={`${styles.videoItem} ${displayType}`} onClick={this.onVideoClick}>
         <div className={styles.thumbnail}>
           <img className={styles.thumbnailImg} src={video.snippet.thumbnails.medium.url}></img>
         </div>
@@ -24,4 +24,4 @@ class Video extends PureComponent {
   }
 }
 
-export default Video;
+export default VideoItem;

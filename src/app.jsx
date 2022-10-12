@@ -17,20 +17,20 @@ class App extends Component {
     window.addEventListener('popstate', async () => {
       const { pathname } = window.location;
       if (pathname.indexOf('/detail') === 0) {
-        await this.getVideoItemData(pathname.split('/')[2]);
+        await this.getVideoDetailData(pathname.split('/')[2]);
       } else {
         this.setState({ ...this.state });
       }
     });
   }
 
-  //로고 클릭 시 메인 페이지로 이동
+  /** 로고 클릭 시 메인 페이지로 이동 */
   handleLogoClick = () => {
     routeChange(`/`);
     this.getVideosData();
   };
 
-  //메인 페이지 - 비디오 목록 가져오기
+  /** 메인 페이지 - 비디오 목록 가져오기 */
   getVideosData = async () => {
     try {
       const videos = await this.props.youtube.videos();
@@ -40,7 +40,7 @@ class App extends Component {
     }
   };
 
-  //검색 페이지 - 조회 결과 가져오기
+  /** 검색 페이지 - 조회 결과 가져오기 */
   handleSubmit = async (keyword) => {
     try {
       const videos = await this.props.youtube.search(keyword);
@@ -51,14 +51,14 @@ class App extends Component {
     }
   };
 
-  //비디오 클릭시
+  /** 비디오 클릭시 */
   handleVideoClick = async (videoId) => {
     routeChange(`/detail/${videoId}`);
-    await this.getVideoItemData(videoId);
+    await this.getVideoDetailData(videoId);
   };
 
-  //상세 페이지 - 비디오와 채널 데이터 가져오기
-  getVideoItemData = async (videoId) => {
+  /** 상세 페이지 - 비디오와 채널 데이터 가져오기 */
+  getVideoDetailData = async (videoId) => {
     const video = await this.props.youtube.videoDetail(videoId);
     video.snippet.description = setDescription(video.snippet.description);
 
@@ -111,7 +111,7 @@ class App extends Component {
 
 export default App;
 
-//상세 페이지 - 비디오 설명에 있는 링크와 태그 형식 만들기
+/** 상세 페이지 - 비디오 설명에 있는 링크와 태그 형식 만들기 */
 function setDescription(description) {
   //줄바꿈 변환
   let str = description.replaceAll('\n', '<br/>');
@@ -122,7 +122,7 @@ function setDescription(description) {
   return str;
 }
 
-//상세 페이지 - 채널 구독자 수
+/** 상세 페이지 - 채널 구독자 수 */
 function setSubscribers(subscriberCount) {
   if (subscriberCount.length > 5) {
     return `${Math.floor(Number(subscriberCount) / 10000)}만명`;

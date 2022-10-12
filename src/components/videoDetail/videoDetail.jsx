@@ -17,7 +17,6 @@ class VideoDetail extends Component {
   render() {
     const video = this.props.video.snippet;
     const { isMore } = this.state;
-
     return (
       <>
         <iframe //

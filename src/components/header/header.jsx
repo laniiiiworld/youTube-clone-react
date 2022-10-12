@@ -9,7 +9,7 @@ class Header extends PureComponent {
 
   render() {
     return (
-      <header className={styles.nav}>
+      <header className={styles.header}>
         <div className={styles.logo} onClick={this.onLogoClick}>
           <img className={styles.logoImg} src='/images/logo.png' alt='logo'></img>
           <span>YouTube</span>

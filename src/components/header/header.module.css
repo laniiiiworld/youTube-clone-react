@@ -1,6 +1,6 @@
 @value XXXLarge-size, XXLarge-size, small-space, medium-space, Large-space from '../../common/size.css';
 
-.nav {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;

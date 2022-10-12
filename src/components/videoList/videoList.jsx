@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Video from '../video/video';
+import VideoItem from '../videoItem/videoItem';
 import styles from './videoList.module.css';
 
 class VideoList extends Component {
@@ -9,7 +9,12 @@ class VideoList extends Component {
     return (
       <ul className={`${styles.videoList} ${displayType}`}>
         {videos.map((video) => (
-          <Video key={video.id.videoId ? video.id.videoId : video.id} video={video} displayType={this.props.displayType} handleVideoClick={this.props.handleVideoClick} />
+          <VideoItem //
+            key={video.id.videoId ? video.id.videoId : video.id}
+            video={video}
+            displayType={this.props.displayType}
+            handleVideoClick={this.props.handleVideoClick}
+          />
         ))}
       </ul>
     );
