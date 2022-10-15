@@ -5,10 +5,11 @@ import Header from './components/header/header';
 import MainPage from './components/mainPage/mainPage';
 import VideoSearchPage from './components/videoSearchPage/videoSearchPage';
 import VideoDetailPage from './components/videoDetailPage/videoDetailPage';
+import Loading from './components/loading/loading';
 import { routeChange } from './service/router.js';
 
 class App extends Component {
-  state = { videoId: '', videos: [], video: {}, channel: {} };
+  state = { videoId: '', videos: [], video: {}, channel: {}, isLoading: false };
 
   componentDidMount() {
     this.getVideosData();
@@ -32,9 +33,10 @@ class App extends Component {
 
   /** 메인 페이지 - 비디오 목록 가져오기 */
   getVideosData = async () => {
+    this.setState({ ...this.state, isLoading: true });
     try {
       const videos = await this.props.youtube.videos();
-      this.setState({ videos, videoId: '', video: {}, channel: {} });
+      this.setState({ videos, videoId: '', video: {}, channel: {}, isLoading: false });
     } catch (error) {
       console.log(error);
     }
@@ -42,10 +44,11 @@ class App extends Component {
 
   /** 검색 페이지 - 조회 결과 가져오기 */
   handleSubmit = async (keyword) => {
+    this.setState({ ...this.state, isLoading: true });
     try {
       const videos = await this.props.youtube.search(keyword);
       routeChange(`/search`);
-      this.setState({ videos, videoId: '', video: {}, channel: {} });
+      this.setState({ videos, videoId: '', video: {}, channel: {}, isLoading: false });
     } catch (error) {
       console.log(error);
     }
@@ -59,6 +62,8 @@ class App extends Component {
 
   /** 상세 페이지 - 비디오와 채널 데이터 가져오기 */
   getVideoDetailData = async (videoId) => {
+    this.setState({ ...this.state, isLoading: true });
+
     const video = await this.props.youtube.videoDetail(videoId);
     video.snippet.description = setDescription(video.snippet.description);
 
@@ -66,7 +71,7 @@ class App extends Component {
     const channel = await this.props.youtube.videoChannel(channelId);
     channel.statistics = { ...channel.statistics, subscribers: setSubscribers(channel.statistics.subscriberCount) };
 
-    this.setState({ ...this.state, videoId, video, channel });
+    this.setState({ ...this.state, videoId, video, channel, isLoading: false });
   };
 
   render() {
@@ -103,7 +108,7 @@ class App extends Component {
     return (
       <>
         <Header handleLogoClick={this.handleLogoClick} handleSubmit={this.handleSubmit} />
-        {page}
+        {this.state.isLoading ? <Loading /> : page}
       </>
     );
   }
