@@ -19,13 +19,9 @@ class VideoDetail extends Component {
     const { isMore } = this.state;
     return (
       <>
-        <iframe //
-          className={styles.videoPlayer}
-          src={EMBED_URL + this.props.video.id}
-          type='text/html'
-          frameBorder='0'
-          allowFullScreen
-        />
+        <section className={styles.videoPlayer}>
+          <iframe src={EMBED_URL + video.id} frameBorder='0' allowFullScreen></iframe>
+        </section>
         <div className={styles.title}>{video.title}</div>
         <ul className={styles.icons}>
           <li>
