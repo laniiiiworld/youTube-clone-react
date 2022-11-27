@@ -20,7 +20,7 @@ class VideoDetail extends Component {
     return (
       <>
         <section className={styles.videoPlayer}>
-          <iframe src={EMBED_URL + video.id} frameBorder='0' allowFullScreen></iframe>
+          <iframe src={EMBED_URL + this.props.video.id} frameBorder='0' allowFullScreen></iframe>
         </section>
         <div className={styles.title}>{video.title}</div>
         <ul className={styles.icons}>
