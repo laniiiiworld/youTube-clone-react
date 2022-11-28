@@ -7,13 +7,21 @@ class KeywordSearch extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const keyword = this.inputRef.current.value;
-    keyword && this.props.handleSubmit(keyword);
+    keyword && this.props.searchKeyword(keyword, []);
   };
 
   render() {
     return (
       <form className={styles.keywordSearch} onSubmit={this.onSubmit}>
-        <input className={styles.input} ref={this.inputRef} type='text' placeholder='검색' />
+        <input //
+          id='keywordSearchInput'
+          className={styles.input}
+          ref={this.inputRef}
+          type='text'
+          placeholder='검색'
+          autoComplete='off'
+          onFocus={this.props.handleInputFocus}
+        />
         <button className={styles.button}>
           <i className='fa-solid fa-magnifying-glass'></i>
         </button>

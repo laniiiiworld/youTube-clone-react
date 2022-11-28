@@ -14,7 +14,7 @@ class Header extends PureComponent {
           <img className={styles.logoImg} src='/images/logo.png' alt='logo'></img>
           <span>YouTube</span>
         </div>
-        <KeywordSearchArea handleSubmit={this.props.handleSubmit} />
+        <KeywordSearchArea handleSearch={this.props.handleSearch} />
         <div className={styles.icons}></div>
       </header>
     );

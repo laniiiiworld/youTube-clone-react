@@ -7,6 +7,7 @@ import VideoSearchPage from './components/videoSearchPage/videoSearchPage';
 import VideoDetailPage from './components/videoDetailPage/videoDetailPage';
 import Loading from './components/loading/loading';
 import { routeChange } from './service/router.js';
+import { setSelectedKeyword } from './service/storage';
 
 class App extends Component {
   state = { videoId: '', videos: [], video: {}, channel: {}, isLoading: false };
@@ -42,13 +43,30 @@ class App extends Component {
     }
   };
 
-  /** 검색 페이지 - 조회 결과 가져오기 */
-  handleSubmit = async (keyword) => {
+  /** 검색 페이지 - API에서 검색 결과 가져오기 */
+  getSearchResultVideos = async (keyword) => {
     this.setState({ ...this.state, isLoading: true });
     try {
       const videos = await this.props.youtube.search(keyword);
-      routeChange(`/search`);
       this.setState({ videos, videoId: '', video: {}, channel: {}, isLoading: false });
+      return videos;
+    } catch (error) {
+      this.setState({ videos: [], videoId: '', video: {}, channel: {}, isLoading: false });
+      return [];
+    }
+  };
+
+  /** 검색 페이지로 이동 */
+  handleSearch = async (keyword) => {
+    if (!keyword) return;
+    setSelectedKeyword('selectedKeywords', keyword);
+
+    try {
+      const data = await this.getSearchResultVideos(keyword);
+      //error가 발생하지 않은 경우에만 이동
+      if (data.length) {
+        routeChange(`/search`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -107,7 +125,7 @@ class App extends Component {
 
     return (
       <>
-        <Header handleLogoClick={this.handleLogoClick} handleSubmit={this.handleSubmit} />
+        <Header handleLogoClick={this.handleLogoClick} handleSearch={this.handleSearch} />
         {this.state.isLoading ? <Loading /> : page}
       </>
     );
