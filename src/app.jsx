@@ -48,10 +48,8 @@ class App extends Component {
     this.setState({ ...this.state, isLoading: true });
     try {
       const videos = await this.props.youtube.search(keyword);
-      this.setState({ videos, videoId: '', video: {}, channel: {}, isLoading: false });
       return videos;
     } catch (error) {
-      this.setState({ videos: [], videoId: '', video: {}, channel: {}, isLoading: false });
       return [];
     }
   };
@@ -67,8 +65,10 @@ class App extends Component {
       if (data.length) {
         routeChange(`/search`);
       }
+      this.setState({ videos: data, videoId: '', video: {}, channel: {}, isLoading: false });
     } catch (error) {
       console.log(error);
+      this.setState({ videos: [], videoId: '', video: {}, channel: {}, isLoading: false });
     }
   };
 
